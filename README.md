@@ -12,7 +12,7 @@ Convert a [Day One](https://dayoneapp.com/) JSON export into individual entries 
 * Obsidian [Icons Plugin](https://github.com/visini/obsidian-icons-plugin) to display calendar marker at start of page heading
 
 ## Day One version
-This script works with version 5.9.1 (1250) of Day One. It has not been tested with any other versions.
+This script works with version 2023.25 (1526) of Day One. It has not been tested with any other versions.
 
 ## Setup
 
