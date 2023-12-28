@@ -9,13 +9,13 @@ import shutil
 import time
 
 # Set this as the location where your Journal.json file is located
-root = r"/Users/jbuhler/Downloads/quotes/" 
+root = r"/Users/jbuhler/Downloads/notes/" 
 icons = False   # Set to true if you are using the Icons Plugin in Obsidian
 tagPrefix = ""  # This will append journal/ as part of the tag name for sub-tags ie. instead of #entry, it is #journal/entry. To exclude set to "". If you change journal to something else, make sure you keep the trailing /
 
 
-journalFolder = os.path.join(root, "quotes") #name of folder where journal entries will end up
-fn = os.path.join( root, "Quotes.json" )
+journalFolder = os.path.join(root, "notes") #name of folder where journal entries will end up
+fn = os.path.join( root, "Notes.json" )
 
 # Clean out existing journal folder, otherwise each run creates new files
 if os.path.isdir(journalFolder):
