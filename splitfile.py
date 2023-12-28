@@ -54,11 +54,11 @@ with open(fn, encoding='utf-8') as json_file:
                 pass
         location = location[2:]
 
-        dateCreated = str(createDate)
+        dateCreated = localDate.strftime( "%Y-%m-%d")#str(createDate)
         coordinates = ''
  
         frontmatter = '''---
-- created: ''' + dateCreated + '''
+date: ''' + dateCreated + '''
 '''
         
         if 'location' in entry:
