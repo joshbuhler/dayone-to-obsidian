@@ -9,7 +9,7 @@ import shutil
 import time
 
 # Set this as the location where your Journal.json file is located
-root = r"../quotes/" 
+root = r"/Users/jbuhler/Downloads/quotes/" 
 icons = False   # Set to true if you are using the Icons Plugin in Obsidian
 tagPrefix = "#quotes/"  # This will append journal/ as part of the tag name for sub-tags ie. instead of #entry, it is #journal/entry. To exclude set to "". If you change journal to something else, make sure you keep the trailing /
 
