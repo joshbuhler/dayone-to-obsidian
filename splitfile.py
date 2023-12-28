@@ -63,7 +63,7 @@ date: ''' + dateCreated + '''
         
         if 'location' in entry:
             coordinates = str(entry['location']['latitude']) + ',' + str(entry['location']['longitude'])
-            frontmatter = frontmatter +  '- location: [' + coordinates + ']'
+            frontmatter = frontmatter +  'location: [' + coordinates + ']'
         frontmatter = frontmatter + '''
 ---
 '''
