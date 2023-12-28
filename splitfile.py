@@ -11,7 +11,7 @@ import time
 # Set this as the location where your Journal.json file is located
 root = r"/Users/jbuhler/Downloads/quotes/" 
 icons = False   # Set to true if you are using the Icons Plugin in Obsidian
-tagPrefix = "#quotes/"  # This will append journal/ as part of the tag name for sub-tags ie. instead of #entry, it is #journal/entry. To exclude set to "". If you change journal to something else, make sure you keep the trailing /
+tagPrefix = ""  # This will append journal/ as part of the tag name for sub-tags ie. instead of #entry, it is #journal/entry. To exclude set to "". If you change journal to something else, make sure you keep the trailing /
 
 
 journalFolder = os.path.join(root, "quotes") #name of folder where journal entries will end up
@@ -63,7 +63,21 @@ date: ''' + dateCreated + '''
         
         if 'location' in entry:
             coordinates = str(entry['location']['latitude']) + ',' + str(entry['location']['longitude'])
-            frontmatter = frontmatter +  'location: [' + coordinates + ']'
+            frontmatter = frontmatter +  'location: [' + coordinates + ']\n'
+
+        tagString = 'tags: \n'
+        if 'tags' in entry:
+            tags = []
+            for t in entry['tags']:
+                tags.append( "%s%s" % (tagPrefix, t.replace(' ', '-').replace('---', '-') ) )
+            if entry['starred']:
+                tags.append( "%sstarred" % (tagPrefix) )
+
+            for t in tags:
+                tagString = tagString + '  - ' + t + "\n"
+
+            frontmatter = frontmatter + tagString
+
         frontmatter = frontmatter + '''
 ---
 '''
@@ -117,18 +131,6 @@ date: ''' + dateCreated + '''
         #     newEntry.append( '- GPS: [%s, %s](https://www.google.com/maps/search/?api=1&query=%s,%s)\n' % ( entry['location']['latitude'], entry['location']['longitude'], entry['location']['latitude'], entry['location']['longitude'] ) )
         # except KeyError:
         #     pass
-
-        tags = []
-        if 'tags' in entry:
-            tags = []
-            for t in entry['tags']:
-                tags.append( "%s%s" % (tagPrefix, t.replace(' ', '-').replace('---', '-') ) )
-            if entry['starred']:
-                tags.append( "%sstarred" % (tagPrefix) )
-        if len(tags) > 0:
-            newEntry.append( "- Tags: %s\n" % " ".join( tags ))
-
-
 
         # Save entries organised by year, year-month, year-month-day.md
         yearDir = os.path.join( journalFolder, str(createDate.year) )
